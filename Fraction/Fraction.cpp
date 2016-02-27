@@ -122,14 +122,19 @@ void Fraction::print(Fraction fra)
 {
 	int greatestDivisor = gcd(fra);
 
-	// without simplifying
+	// simplify original fraction:
+	fra.numerator = fra.numerator / greatestDivisor;
+	fra.denominator = fra.denominator / greatestDivisor;
+	
 	int wholePart = fra.numerator / fra.denominator;
 	int fractionPart = fra.numerator % fra.denominator;
-
-	
-
 
 	cout << "The fraction is: " << wholePart << "+ (" << fractionPart << "/" << fra.denominator << ")";
 }
 
+int main()
+{
+
+	return 0;
+}
 
