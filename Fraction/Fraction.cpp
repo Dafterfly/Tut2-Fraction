@@ -14,6 +14,7 @@ public:
 	Fraction add(Fraction addend);
 	Fraction subtract(Fraction subtrahend);
 	Fraction multiply(Fraction multiplicand);
+	Fraction divide(Fraction divisor);
 	// TODO will add these later
 };
 
@@ -69,6 +70,17 @@ Fraction Fraction::multiply(Fraction multiplicand)
 	Fraction answer;
 	int ansDen = denominator * multiplicand.denominator; 
 	int ansNum = numerator * multiplicand.numerator;
+
+	answer.setNumDenom(ansNum, ansDen);
+
+	return answer;
+}
+
+Fraction Fraction::divide(Fraction divisor)
+{
+	Fraction answer;
+	int ansDen = denominator * divisor.numerator;
+	int ansNum = numerator * divisor.denominator;
 
 	answer.setNumDenom(ansNum, ansDen);
 
