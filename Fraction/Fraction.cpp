@@ -31,5 +31,10 @@ void Fraction::getNumDenom()
 
 void Fraction::setNumDenom(int num, int denom)
 {
+	numerator = num;
 
+	if (denom != 0) // CHeck to make sure the denominator is not set to zero
+	{
+		denominator = denom;
+	}
 }
