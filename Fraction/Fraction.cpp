@@ -15,8 +15,8 @@ public:
 	Fraction subtract(Fraction subtrahend);
 	Fraction multiply(Fraction multiplicand);
 	Fraction divide(Fraction divisor);
-	void print(Fraction fra);
-	// TODO will add these later
+	int gcd();
+	void print();
 };
 
 Fraction::Fraction()
@@ -88,23 +88,20 @@ Fraction Fraction::divide(Fraction divisor)
 	return answer;
 }
 
-int gcd(Fraction fra)
+int Fraction::gcd()
 {
-	int num = fra.numerator;
-	int denom = fra.denominator;
-
 	int larger, smaller, temp;
 
 	//determine whether denom or numerator is larger or smaller
-	if (num > denom)
+	if (numerator > denominator)
 	{
-		larger = num;
-		smaller = denom;
+		larger = numerator;
+		smaller = denominator;
 	}
 	else
 		{
-			larger = denom;
-			smaller = num;
+			larger = denominator;
+			smaller = numerator;
 		}
 
 	// calculating gcd
@@ -118,23 +115,23 @@ int gcd(Fraction fra)
 	return larger;
 }
 
-void Fraction::print(Fraction fra)
+void Fraction::print()
 {
-	int greatestDivisor = gcd(fra);
+	int greatestDivisor = gcd();
 
 	// simplify original fraction:
-	fra.numerator = fra.numerator / greatestDivisor;
-	fra.denominator = fra.denominator / greatestDivisor;
+	numerator = numerator / greatestDivisor;
+	denominator = denominator / greatestDivisor;
 	
-	int wholePart = fra.numerator / fra.denominator;
-	int fractionPart = fra.numerator % fra.denominator;
+	int wholePart = numerator / denominator;
+	int fractionPart = numerator % denominator;
 
-	cout << "The fraction is: " << wholePart << "+ (" << fractionPart << "/" << fra.denominator << ")";
+	cout << wholePart << " + (" << fractionPart << "/" << denominator << ")"<<endl;
 }
 
 int main()
 {
-
 	return 0;
+
 }
 
