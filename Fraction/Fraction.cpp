@@ -120,13 +120,13 @@ void Fraction::print()
 	int greatestDivisor = gcd();
 
 	// simplify original fraction:
-	numerator = numerator / greatestDivisor;
-	denominator = denominator / greatestDivisor;
+	int simpNumerator = numerator / greatestDivisor;
+	int simpDenominator = denominator / greatestDivisor;
 	
-	int wholePart = numerator / denominator;
-	int fractionPart = numerator % denominator;
+	int wholePart = simpNumerator / simpDenominator;
+	int fractionPart = simpNumerator % simpDenominator;
 
-	cout << wholePart << " + (" << fractionPart << "/" << denominator << ")"<<endl;
+	cout << wholePart << " + (" << fractionPart << "/" << simpDenominator << ")" << endl;
 }
 
 int main()
