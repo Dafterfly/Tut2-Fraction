@@ -91,8 +91,8 @@ Fraction Fraction::divide(Fraction divisor)
 void Fraction::print(Fraction fra)
 {
 	// without simplifying
-	int wholePrat = fra.numerator / fra.denominator;
+	int wholePart = fra.numerator / fra.denominator;
 	int fractionPart = fra.numerator % fra.denominator;
 
-	cout << "The fraction is: " << wholePrat << "+ (" << fractionPart << "/" << fra.denominator << ")";
+	cout << "The fraction is: " << wholePart << "+ (" << fractionPart << "/" << fra.denominator << ")";
 }
