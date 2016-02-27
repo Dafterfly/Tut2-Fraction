@@ -12,6 +12,7 @@ public:
 	void getNumDenom();
 	void setNumDenom(int num, int denom);
 	Fraction add(Fraction addend);
+	Fraction subtract(Fraction subtrahend);
 	// TODO will add these later
 };
 
@@ -47,6 +48,17 @@ Fraction Fraction::add(Fraction addend)
 	int ansNum = (numerator*addend.denominator) + (addend.numerator*denominator);
 
 	answer.setNumDenom(ansNum,ansDen);
+
+	return answer;
+}
+
+Fraction Fraction::subtract(Fraction subtrahend)
+{
+	Fraction answer;
+	int ansDen = denominator * subtrahend.denominator; // find LCM for denominator
+	int ansNum = (numerator*subtrahend.denominator) + (subtrahend.numerator*denominator);
+
+	answer.setNumDenom(ansNum, ansDen);
 
 	return answer;
 }
