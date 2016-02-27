@@ -4,15 +4,32 @@ using namespace std;
 
 class Fraction
 {
-	// will add these later
-}
+public:
+	Fraction();
+	~Fraction();
+	int numerator;
+	int denominator;
+	void getNumDenom();
+	void setNumDenom(int num, int denom);
+	// TODO will add these later
+};
 
 Fraction::Fraction()
 {
-	int numerator = 0;
-	int denominator = 1; // Can't leave at zero because that is mathemaically nosensical
+	numerator = 0;
+	denominator = 1; // Can't leave at zero because that is mathemaically nosensical
 }
 
 Fraction::~Fraction()
 {
+}
+
+void Fraction::getNumDenom()
+{
+// TO DO
+}
+
+void Fraction::setNumDenom(int num, int denom)
+{
+
 }
