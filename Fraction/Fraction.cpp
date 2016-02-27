@@ -13,3 +13,6 @@ Fraction::Fraction()
 	int denominator = 1; // Can't leave at zero because that is mathemaically nosensical
 }
 
+Fraction::~Fraction()
+{
+}
