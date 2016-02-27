@@ -29,6 +29,7 @@ Fraction::~Fraction()
 {
 }
 
+// I am stumped
 void Fraction::getNumDenom()
 {
 
@@ -131,12 +132,7 @@ void Fraction::print()
 
 int main()
 {
-	Fraction fra1, fra2;
-	fra1.setNumDenom(4, 3);
-	fra2.setNumDenom(2, 4);
-
-	(fra1.subtract(fra2)).print();
-
+	
 	return 0;
 }
 
