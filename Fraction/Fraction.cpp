@@ -15,6 +15,7 @@ public:
 	Fraction subtract(Fraction subtrahend);
 	Fraction multiply(Fraction multiplicand);
 	Fraction divide(Fraction divisor);
+	void print(Fraction fra);
 	// TODO will add these later
 };
 
@@ -30,7 +31,7 @@ Fraction::~Fraction()
 
 void Fraction::getNumDenom()
 {
-// TO DO
+
 }
 
 void Fraction::setNumDenom(int num, int denom)
@@ -87,4 +88,11 @@ Fraction Fraction::divide(Fraction divisor)
 	return answer;
 }
 
+void Fraction::print(Fraction fra)
+{
+	// without simplifying
+	int wholePrat = fra.numerator / fra.denominator;
+	int fractionPart = fra.numerator % fra.denominator;
 
+	cout << "The fraction is: " << wholePrat << "+ (" << fractionPart << "/" << fra.denominator << ")";
+}
