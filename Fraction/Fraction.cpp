@@ -88,11 +88,48 @@ Fraction Fraction::divide(Fraction divisor)
 	return answer;
 }
 
+int gcd(Fraction fra)
+{
+	int num = fra.numerator;
+	int denom = fra.denominator;
+
+	int larger, smaller, temp;
+
+	//determine whether denom or numerator is larger or smaller
+	if (num > denom)
+	{
+		larger = num;
+		smaller = denom;
+	}
+	else
+		{
+			larger = denom;
+			smaller = num;
+		}
+
+	// calculating gcd
+	while (smaller != 0)
+	{
+	temp = smaller;
+	smaller = larger % smaller;
+	larger = temp;
+	}
+	
+	return larger;
+}
+
 void Fraction::print(Fraction fra)
 {
+	int greatestDivisor = gcd(fra);
+
 	// without simplifying
 	int wholePart = fra.numerator / fra.denominator;
 	int fractionPart = fra.numerator % fra.denominator;
 
+	
+
+
 	cout << "The fraction is: " << wholePart << "+ (" << fractionPart << "/" << fra.denominator << ")";
 }
+
+
