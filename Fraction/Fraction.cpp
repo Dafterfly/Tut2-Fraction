@@ -1,3 +1,10 @@
+/*
+Eustacia Rajman
+214514354
+ENEL3CC - Computer Methods 3
+Tut2-Fraction
+*/
+
 #include <iostream>
 
 using namespace std;
