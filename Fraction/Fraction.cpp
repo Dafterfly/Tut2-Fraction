@@ -2,13 +2,15 @@
 
 using namespace std;
 
+// Class Definition
 class Fraction
 {
+	int numerator;
+	int denominator;
+
 public:
 	Fraction();
 	~Fraction();
-	int numerator;
-	int denominator;
 	void getNumDenom(int &pointNumerator, int &pointDenominator);
 	void setNumDenom(int num, int denom);
 	Fraction add(Fraction addend);
@@ -19,16 +21,19 @@ public:
 	void print();
 };
 
+// constructor
 Fraction::Fraction()
 {
 	numerator = 0;
 	denominator = 1; // Can't leave at zero because that is mathemaically nosensical
 }
 
+// destructor
 Fraction::~Fraction()
 {
 }
 
+// get function
 void Fraction::getNumDenom(int &pointNumerator, int &pointDenominator)
 {
 	pointNumerator = numerator;
@@ -36,6 +41,7 @@ void Fraction::getNumDenom(int &pointNumerator, int &pointDenominator)
 
 }
 
+// set function
 void Fraction::setNumDenom(int num, int denom)
 {
 	numerator = num;
@@ -46,6 +52,7 @@ void Fraction::setNumDenom(int num, int denom)
 	}
 }
 
+// adds fraction taken as parameter to the fraction object
 Fraction Fraction::add(Fraction addend)
 {
 	Fraction answer;
@@ -57,6 +64,7 @@ Fraction Fraction::add(Fraction addend)
 	return answer;
 }
 
+// subtracts fraction taken as parameter from the fraction object
 Fraction Fraction::subtract(Fraction subtrahend)
 {
 	Fraction answer;
@@ -68,6 +76,7 @@ Fraction Fraction::subtract(Fraction subtrahend)
 	return answer;
 }
 
+// multiplies fraction object with fraction taken as parameter
 Fraction Fraction::multiply(Fraction multiplicand)
 {
 	Fraction answer;
@@ -79,6 +88,7 @@ Fraction Fraction::multiply(Fraction multiplicand)
 	return answer;
 }
 
+// divides fraction object with fraction taken as parameter
 Fraction Fraction::divide(Fraction divisor)
 {
 	Fraction answer;
@@ -90,6 +100,7 @@ Fraction Fraction::divide(Fraction divisor)
 	return answer;
 }
 
+// Finds gcd of the numberator and denominator
 int Fraction::gcd()
 {
 	int larger, smaller, temp;
@@ -117,6 +128,7 @@ int Fraction::gcd()
 	return larger;
 }
 
+// prints a simplified fraction in mixed number form
 void Fraction::print()
 {
 	int greatestDivisor = gcd();
@@ -137,8 +149,6 @@ int main()
 	Fraction fra1, fra2;
 	fra1.setNumDenom(4, 3);
 	fra2.setNumDenom(2, 4);
-
-	
 
 	cout << "Fraction 1: "; 
 	fra1.print();
