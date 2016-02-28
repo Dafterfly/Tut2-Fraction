@@ -133,7 +133,31 @@ void Fraction::print()
 
 int main()
 {
+	// Testing part
+	Fraction fra1, fra2;
+	fra1.setNumDenom(4, 3);
+	fra2.setNumDenom(2, 4);
+
 	
+
+	cout << "Fraction 1: "; 
+	fra1.print();
+	cout << "Fraction 2: "; 
+	fra2.print();
+
+	cout << endl; 
+
+	cout << "Fraction 1 + Fraction 2: ";
+	(fra1.add(fra2)).print();
+
+	cout << "Fraction 1 - Fraction 2: ";
+	(fra1.subtract(fra2)).print();
+
+	cout << "Fraction 1 * Fraction 2: ";
+	(fra1.multiply(fra2)).print();
+
+	cout << "Fraction 1 / Fraction 2: ";
+	(fra1.divide(fra2)).print();
 
 	return 0;
 }
