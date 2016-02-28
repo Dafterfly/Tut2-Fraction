@@ -1,21 +1,21 @@
 /*
-Eustacia Rajman
-214514354
-ENEL3CC - Computer Methods 3
-Tut2-Fraction
+	Eustacia Rajman
+	214514354
+	ENEL3CC - Computer Methods 3
+	Tut2-Fraction
 */
 
 #include <iostream>
 
 using namespace std;
 
-// Class Definition
+// Class Definition 
 class Fraction
 {
-	int numerator;
+	int numerator; 
 	int denominator;
-
-public:
+	
+	public:
 	Fraction();
 	~Fraction();
 	void getNumDenom(int &pointNumerator, int &pointDenominator);
@@ -32,7 +32,7 @@ public:
 Fraction::Fraction()
 {
 	numerator = 0;
-	denominator = 1; // Can't leave at zero because that is mathemaically nosensical
+	denominator = 1; // Can't leave at zero because that is mathematically nonsensical
 }
 
 // destructor
@@ -45,14 +45,14 @@ void Fraction::getNumDenom(int &pointNumerator, int &pointDenominator)
 {
 	pointNumerator = numerator;
 	pointDenominator = denominator;
-
+	
 }
 
 // set function
 void Fraction::setNumDenom(int num, int denom)
 {
 	numerator = num;
-
+	
 	if (denom != 0) // CHeck to make sure the denominator is not set to zero
 	{
 		denominator = denom;
@@ -65,9 +65,9 @@ Fraction Fraction::add(Fraction addend)
 	Fraction answer;
 	int ansDen = denominator * addend.denominator; // find LCM for denominator
 	int ansNum = (numerator*addend.denominator) + (addend.numerator*denominator);
-
+	
 	answer.setNumDenom(ansNum,ansDen);
-
+	
 	return answer;
 }
 
@@ -77,9 +77,9 @@ Fraction Fraction::subtract(Fraction subtrahend)
 	Fraction answer;
 	int ansDen = denominator * subtrahend.denominator; // find LCM for denominator
 	int ansNum = (numerator*subtrahend.denominator) - (subtrahend.numerator*denominator);
-
+	
 	answer.setNumDenom(ansNum, ansDen);
-
+	
 	return answer;
 }
 
@@ -89,9 +89,9 @@ Fraction Fraction::multiply(Fraction multiplicand)
 	Fraction answer;
 	int ansDen = denominator * multiplicand.denominator; 
 	int ansNum = numerator * multiplicand.numerator;
-
+	
 	answer.setNumDenom(ansNum, ansDen);
-
+	
 	return answer;
 }
 
@@ -101,17 +101,17 @@ Fraction Fraction::divide(Fraction divisor)
 	Fraction answer;
 	int ansDen = denominator * divisor.numerator;
 	int ansNum = numerator * divisor.denominator;
-
+	
 	answer.setNumDenom(ansNum, ansDen);
-
+	
 	return answer;
 }
 
-// Finds gcd of the numberator and denominator
+// Finds gcd of the numerator and denominator
 int Fraction::gcd()
 {
 	int larger, smaller, temp;
-
+	
 	//determine whether denom or numerator is larger or smaller
 	if (numerator > denominator)
 	{
@@ -119,17 +119,17 @@ int Fraction::gcd()
 		smaller = denominator;
 	}
 	else
-		{
-			larger = denominator;
-			smaller = numerator;
-		}
-
+	{
+		larger = denominator;
+		smaller = numerator;
+	}
+	
 	// calculating gcd
 	while (smaller != 0)
 	{
-	temp = smaller;
-	smaller = larger % smaller;
-	larger = temp;
+		temp = smaller;
+		smaller = larger % smaller;
+		larger = temp;
 	}
 	
 	return larger;
@@ -139,14 +139,14 @@ int Fraction::gcd()
 void Fraction::print()
 {
 	int greatestDivisor = gcd();
-
+	
 	// simplify original fraction:
 	int simpNumerator = numerator / greatestDivisor;
 	int simpDenominator = denominator / greatestDivisor;
 	
 	int wholePart = simpNumerator / simpDenominator;
 	int fractionPart = simpNumerator % simpDenominator;
-
+	
 	cout << wholePart << " + (" << fractionPart << "/" << simpDenominator << ")" << endl;
 }
 
@@ -156,26 +156,26 @@ int main()
 	Fraction fra1, fra2;
 	fra1.setNumDenom(4, 3);
 	fra2.setNumDenom(2, 4);
-
+	
 	cout << "Fraction 1: "; 
 	fra1.print();
 	cout << "Fraction 2: "; 
 	fra2.print();
-
+	
 	cout << endl; 
-
+	
 	cout << "Fraction 1 + Fraction 2: ";
 	(fra1.add(fra2)).print();
-
+	
 	cout << "Fraction 1 - Fraction 2: ";
 	(fra1.subtract(fra2)).print();
-
+	
 	cout << "Fraction 1 * Fraction 2: ";
 	(fra1.multiply(fra2)).print();
-
+	
 	cout << "Fraction 1 / Fraction 2: ";
 	(fra1.divide(fra2)).print();
-
+	
 	return 0;
 }
 
