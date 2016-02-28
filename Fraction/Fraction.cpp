@@ -9,7 +9,7 @@ public:
 	~Fraction();
 	int numerator;
 	int denominator;
-	void getNumDenom();
+	void getNumDenom(int &pointNumerator, int &pointDenominator);
 	void setNumDenom(int num, int denom);
 	Fraction add(Fraction addend);
 	Fraction subtract(Fraction subtrahend);
@@ -29,9 +29,10 @@ Fraction::~Fraction()
 {
 }
 
-// I am stumped
-void Fraction::getNumDenom()
+void Fraction::getNumDenom(int &pointNumerator, int &pointDenominator)
 {
+	pointNumerator = numerator;
+	pointDenominator = denominator;
 
 }
 
@@ -133,6 +134,7 @@ void Fraction::print()
 int main()
 {
 	
+
 	return 0;
 }
 
