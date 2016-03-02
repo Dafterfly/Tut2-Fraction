@@ -139,16 +139,24 @@ int Fraction::gcd()
 void Fraction::print()
 {
 	int greatestDivisor = gcd();
-	
+
 	// simplify original fraction:
 	int simpNumerator = numerator / greatestDivisor;
 	int simpDenominator = denominator / greatestDivisor;
-	
+
 	int wholePart = simpNumerator / simpDenominator;
 	int fractionPart = simpNumerator % simpDenominator;
-	
-	cout << wholePart << " + (" << fractionPart << "/" << simpDenominator << ")" << endl;
-}
+
+	// 
+	if (wholePart != 0)
+	{
+		cout << wholePart << " + (" << fractionPart << "/" << simpDenominator << ")" << endl;
+	}
+	else
+	{
+		cout << fractionPart << "/" << simpDenominator << endl;
+	}
+	}
 
 int main()
 {
