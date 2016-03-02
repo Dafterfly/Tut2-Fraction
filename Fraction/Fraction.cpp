@@ -177,6 +177,10 @@ int main()
 	
 	cout << "Fraction 1 - Fraction 2: ";
 	(fra1 - fra2).print();
+
+	// Special case of subtraction where answer returned gives a negative answer
+	cout << "Fraction 2 - Fraction 1: ";
+	(fra2 - fra1).print();
 	
 	cout << "Fraction 1 * Fraction 2: ";
 	(fra1 * fra2).print();
