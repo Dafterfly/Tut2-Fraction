@@ -20,10 +20,10 @@ class Fraction
 	~Fraction();
 	void getNumDenom(int &pointNumerator, int &pointDenominator);
 	void setNumDenom(int num, int denom);
-	Fraction add(Fraction addend);
-	Fraction subtract(Fraction subtrahend);
-	Fraction multiply(Fraction multiplicand);
-	Fraction divide(Fraction divisor);
+	Fraction operator+(const Fraction& addend);
+	Fraction operator-(const Fraction& subtrahend);
+	Fraction operator*(const Fraction& multiplicand);
+	Fraction operator/(const Fraction& divisor);
 	int gcd();
 	void print();
 };
@@ -60,7 +60,7 @@ void Fraction::setNumDenom(int num, int denom)
 }
 
 // adds fraction taken as parameter to the fraction object
-Fraction Fraction::add(Fraction addend)
+Fraction Fraction::operator+(const Fraction& addend)
 {
 	Fraction answer;
 	int ansDen = denominator * addend.denominator; // find LCM for denominator
@@ -72,7 +72,7 @@ Fraction Fraction::add(Fraction addend)
 }
 
 // subtracts fraction taken as parameter from the fraction object
-Fraction Fraction::subtract(Fraction subtrahend)
+Fraction Fraction::operator-(const Fraction& subtrahend)
 {
 	Fraction answer;
 	int ansDen = denominator * subtrahend.denominator; // find LCM for denominator
@@ -84,7 +84,7 @@ Fraction Fraction::subtract(Fraction subtrahend)
 }
 
 // multiplies fraction object with fraction taken as parameter
-Fraction Fraction::multiply(Fraction multiplicand)
+Fraction Fraction::operator*(const Fraction&  multiplicand)
 {
 	Fraction answer;
 	int ansDen = denominator * multiplicand.denominator; 
@@ -96,7 +96,7 @@ Fraction Fraction::multiply(Fraction multiplicand)
 }
 
 // divides fraction object with fraction taken as parameter
-Fraction Fraction::divide(Fraction divisor)
+Fraction Fraction::operator/(const Fraction&  divisor)
 {
 	Fraction answer;
 	int ansDen = denominator * divisor.numerator;
@@ -165,16 +165,16 @@ int main()
 	cout << endl; 
 	
 	cout << "Fraction 1 + Fraction 2: ";
-	(fra1.add(fra2)).print();
+	(fra1 + fra2).print();
 	
 	cout << "Fraction 1 - Fraction 2: ";
-	(fra1.subtract(fra2)).print();
+	(fra1 - fra2).print();
 	
 	cout << "Fraction 1 * Fraction 2: ";
-	(fra1.multiply(fra2)).print();
+	(fra1 * fra2).print();
 	
 	cout << "Fraction 1 / Fraction 2: ";
-	(fra1.divide(fra2)).print();
+	(fra1 / fra2).print();
 	
 	return 0;
 }
