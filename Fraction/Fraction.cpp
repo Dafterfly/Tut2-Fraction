@@ -134,7 +134,7 @@ ostream& operator<< (ostream& output, Fraction& fra)
 	return output;
 }
 
-// Overload >> operator non-mixed fraction
+ //Overload >> operator non-mixed fraction
 istream& operator>> (istream& input, Fraction& fra)
 {
 	int num, denom;
@@ -142,12 +142,9 @@ istream& operator>> (istream& input, Fraction& fra)
 	input >> num;
 	input.ignore(1, '/');
 	input >> denom;
-	input.ignore(1, '/');
 	fra.setNumDenom(num, denom);
 	return input;
 }
-
-
 
 // Finds gcd of the numerator and denominator
 int Fraction::gcd()
@@ -234,10 +231,11 @@ int main()
 	cout << "Testing overloading of <<  operator:" << endl;
 	cout << "Fraction 1: " << fra1 << endl;
 
-	cout << "Testing overloading of >>  operator:  Enter fraction in format [numerator]/[denminator] (no spaces)" << endl;
+	// Testing overloading of >>  operator:  Enter fraction in format [numerator]/[denminator] (no spaces)
+	cout << "Testing overloading of >>  operator:  Enter fraction in format [numerator]/[denminator] (no spaces): ";
 	Fraction fra3;
 	cin >> fra3;
-	cout << fra3;
+	cout << "Fraction inputted was: "<<fra3<<endl;
 
 	return 0;
 }
