@@ -25,6 +25,7 @@ class Fraction
 	Fraction operator*(const Fraction& multiplicand);
 	Fraction operator/(const Fraction& divisor);
 	friend ostream& operator<< (ostream&, Fraction&);
+	friend ostream& operator>> (ostream&, Fraction&);
 	int gcd();
 	void print();
 };
@@ -123,7 +124,32 @@ ostream& operator<< (ostream& os, Fraction& fra)
 	// 
 	if (wholePart != 0)
 	{
-		os << wholePart << " + (" << fractionPart << "/" << simpDenominator << ")";
+		os << wholePart << " " << fractionPart << "/" << simpDenominator;
+	}
+	else
+	{
+		os << fractionPart << "/" << simpDenominator;
+	}
+
+	return os;
+}
+
+// Overload >> operator
+ostream& operator>> (ostream& os, Fraction& fra)
+{
+	int greatestDivisor = fra.gcd();
+
+	// simplify original fraction:
+	int simpNumerator = fra.numerator / greatestDivisor;
+	int simpDenominator = fra.denominator / greatestDivisor;
+
+	int wholePart = simpNumerator / simpDenominator;
+	int fractionPart = simpNumerator % simpDenominator;
+
+	// 
+	if (wholePart != 0)
+	{
+		os << wholePart << " " << fractionPart << "/" << simpDenominator;
 	}
 	else
 	{
@@ -177,7 +203,7 @@ void Fraction::print()
 	// 
 	if (wholePart != 0)
 	{
-		cout << wholePart << " + (" << fractionPart << "/" << simpDenominator << ")" << endl;
+		cout << wholePart << " " << fractionPart << "/" << simpDenominator << endl;
 	}
 	else
 	{
