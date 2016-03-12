@@ -110,7 +110,7 @@ Fraction Fraction::operator/(const Fraction&  divisor)
 }
 
 // Overload << operator
-ostream& operator<< (ostream& os, Fraction& fra)
+ostream& operator<< (ostream& output, Fraction& fra)
 {
 	int greatestDivisor = fra.gcd();
 
@@ -124,40 +124,30 @@ ostream& operator<< (ostream& os, Fraction& fra)
 	// 
 	if (wholePart != 0)
 	{
-		os << wholePart << " " << fractionPart << "/" << simpDenominator;
+		output << wholePart << " " << fractionPart << "/" << simpDenominator;
 	}
 	else
 	{
-		os << fractionPart << "/" << simpDenominator;
+		output << fractionPart << "/" << simpDenominator;
 	}
 
-	return os;
+	return output;
 }
 
-// Overload >> operator
-ostream& operator>> (ostream& os, Fraction& fra)
+// Overload >> operator non-mixed fraction
+istream& operator>> (istream& input, Fraction& fra)
 {
-	int greatestDivisor = fra.gcd();
+	int num, denom;
 
-	// simplify original fraction:
-	int simpNumerator = fra.numerator / greatestDivisor;
-	int simpDenominator = fra.denominator / greatestDivisor;
-
-	int wholePart = simpNumerator / simpDenominator;
-	int fractionPart = simpNumerator % simpDenominator;
-
-	// 
-	if (wholePart != 0)
-	{
-		os << wholePart << " " << fractionPart << "/" << simpDenominator;
-	}
-	else
-	{
-		os << fractionPart << "/" << simpDenominator;
-	}
-
-	return os;
+	input >> num;
+	input.ignore(1, '/');
+	input >> denom;
+	input.ignore(1, '/');
+	fra.setNumDenom(num, denom);
+	return input;
 }
+
+
 
 // Finds gcd of the numerator and denominator
 int Fraction::gcd()
@@ -243,6 +233,11 @@ int main()
 	
 	cout << "Testing overloading of <<  operator:" << endl;
 	cout << "Fraction 1: " << fra1 << endl;
+
+	cout << "Testing overloading of >>  operator:  Enter fraction in format [numerator]/[denminator] (no spaces)" << endl;
+	Fraction fra3;
+	cin >> fra3;
+	cout << fra3;
 
 	return 0;
 }
