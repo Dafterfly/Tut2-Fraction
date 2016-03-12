@@ -24,6 +24,7 @@ class Fraction
 	Fraction operator-(const Fraction& subtrahend);
 	Fraction operator*(const Fraction& multiplicand);
 	Fraction operator/(const Fraction& divisor);
+	friend ostream& operator<< (ostream&, Fraction&);
 	int gcd();
 	void print();
 };
@@ -107,6 +108,31 @@ Fraction Fraction::operator/(const Fraction&  divisor)
 	return answer;
 }
 
+// Overload << operator
+ostream& operator<< (ostream& os, Fraction& fra)
+{
+	int greatestDivisor = fra.gcd();
+
+	// simplify original fraction:
+	int simpNumerator = fra.numerator / greatestDivisor;
+	int simpDenominator = fra.denominator / greatestDivisor;
+
+	int wholePart = simpNumerator / simpDenominator;
+	int fractionPart = simpNumerator % simpDenominator;
+
+	// 
+	if (wholePart != 0)
+	{
+		os << wholePart << " + (" << fractionPart << "/" << simpDenominator << ")";
+	}
+	else
+	{
+		os << fractionPart << "/" << simpDenominator;
+	}
+
+	return os;
+}
+
 // Finds gcd of the numerator and denominator
 int Fraction::gcd()
 {
@@ -136,6 +162,7 @@ int Fraction::gcd()
 }
 
 // prints a simplified fraction in mixed number form
+// this method is now "obsolete" because the << operator is now overloaded
 void Fraction::print()
 {
 	int greatestDivisor = gcd();
@@ -156,7 +183,7 @@ void Fraction::print()
 	{
 		cout << fractionPart << "/" << simpDenominator << endl;
 	}
-	}
+}
 
 int main()
 {
@@ -188,6 +215,9 @@ int main()
 	cout << "Fraction 1 / Fraction 2: ";
 	(fra1 / fra2).print();
 	
+	cout << "Testing overloading of <<  operator:" << endl;
+	cout << "Fraction 1: " << fra1 << endl;
+
 	return 0;
 }
 
